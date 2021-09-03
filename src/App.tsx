@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { SvgBlob } from "react-svg-blob";
 
 export default function App() {
  const [color, setColor] = useState<any>('#0b7285');
@@ -9,6 +10,19 @@ export default function App() {
 
  const adjust = (color: string, amount: number = 0) => {
   return '#' + color.replace(/^#/, '').replace(/../g, color => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
+ }
+
+ function getRandomInt(min: number, max: number) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+ }
+
+ function generateShapeProps() {
+  return {
+   size: 250,
+   edges: getRandomInt(4, 6)
+  };
  }
 
  const shades = [
@@ -49,9 +63,7 @@ export default function App() {
        key={index}
        className="flex justify-center flex-col rounded-b-lg"
       >
-       <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        <path fill={adjust(color, shade)} d="M34.8,-55.9C45.2,-47.5,53.7,-38,61.5,-26.5C69.2,-15,76.3,-1.5,74,10.2C71.6,21.9,60,31.9,49.8,42.6C39.6,53.2,31,64.6,19.4,69.7C7.8,74.8,-6.7,73.5,-17.3,66.8C-27.9,60.1,-34.6,47.9,-40.3,37.2C-46,26.5,-50.8,17.2,-58.1,4.8C-65.3,-7.6,-75.1,-23.2,-72.7,-35.1C-70.3,-47.1,-55.6,-55.3,-41.4,-62C-27.3,-68.7,-13.6,-73.7,-0.7,-72.6C12.2,-71.5,24.4,-64.3,34.8,-55.9Z" transform="translate(100 100)" />
-       </svg>
+       <SvgBlob variant='solid' color={adjust(color, shade)} shapeProps={generateShapeProps()} />
        <p className="pt-2 uppercase text-lg text-gray-500 p-2 border-2 border-t-0 border-gray-100 rounded-b-lg">{adjust(color, shade)}</p>
       </div>
      ))

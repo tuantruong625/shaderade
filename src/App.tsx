@@ -29,7 +29,7 @@ export default function App() {
   130,
   140,
  ]
- 
+
  return (
   <div className="container mx-auto max-w-6xl m-5 px-10 text-gray-800">
    <h1 className="text-3xl pt-8 pb-1 font-medium">Shaderate</h1>
@@ -41,16 +41,16 @@ export default function App() {
       Enter color
       <input type="text" name="color" value={color} placeholder="#e2e2e2" className="p-2 border" onChange={onChange} />
      </label>
-     <input type="color" name="color" value={color}  className="ml-2 p-2 border-none rounded-full h-10 w-10"  onChange={onChange} />
+     <input type="color" name="color" value={color} className="ml-2 p-2 border-none rounded-full h-10 w-10" onChange={onChange} />
     </div>
     {
      shades && shades.map((shade, index) => (
       <div
        key={index}
-       className="flex justify-center flex-col p-2 border-2 border-gray-100 shadow-md rounded-md"
+       className="flex justify-center flex-col rounded-md"
       >
-       <div className="py-16 bg-red-100" style={{ backgroundColor: adjust(color, shade) }}></div>
-       <p className="pt-2 uppercase text-lg text-gray-500">{adjust(color, shade)}</p>
+       <div className="py-16 bg-transparent rounded-t-lg" style={{ backgroundColor: adjust(color, shade) }}></div>
+       <p className="pt-2 uppercase text-lg text-gray-500 border-t-0 border-2 border-gray-100 p-2 rounded-b-lg">{adjust(color, shade)}</p>
       </div>
      ))
     }

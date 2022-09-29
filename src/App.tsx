@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ColorPicker from "./components/ColorPicker/index";
-import { adjust } from "./helpers";
+import { adjust, shades } from "./helpers";
 
 export default function App() {
  const [color, setColor] = useState('#0b7285');
@@ -8,25 +8,6 @@ export default function App() {
  const handleSetColor = ({hex}: {hex: string}) => {
   setColor(hex)
  }
-
- const shades = [
-  -10,
-  5,
-  10,
-  20,
-  30,
-  40,
-  50,
-  60,
-  70,
-  80,
-  90,
-  100,
-  110,
-  120,
-  130,
-  140,
- ]
 
  return (
   <div className="container mx-auto max-w-6xl px-10 text-gray-300 flex justify-center items-center min-h-screen">
@@ -40,8 +21,9 @@ export default function App() {
      {
       shades && shades.map((shade, index) => {
        return (
-        <div key={index} className="text-white">
-         <div className="h-7 w-7 bg-transparent rounded" style={{ backgroundColor: adjust(color, shade) }} />
+        <div key={index}>
+         <div className="h-7 w-7 bg-transparent rounded" style={{ backgroundColor: adjust(color, shade) }} title={adjust(color, shade)} />
+         
         </div>
        )
       })

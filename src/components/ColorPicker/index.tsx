@@ -1,6 +1,11 @@
 import { TwitterPicker } from "react-color"
 import styled from "styled-components"
 
+interface ColorPickerProps {
+ color: string;
+ handleSetColor: ({ hex }: { hex: string }) => void
+}
+
 const Container = styled.div`
  & .twitter-picker {
   background-color: #2C3333 !important;
@@ -10,11 +15,6 @@ const Container = styled.div`
   height: 30px !important;
  }
 `
-
-interface ColorPickerProps {
- color: string;
- handleSetColor: ({ hex }: { hex: string }) => void
-}
 
 const ColorPicker = ({ color, handleSetColor }: ColorPickerProps) => {
  return (

@@ -1,15 +1,12 @@
 import React, { useState } from "react";
-import ColorPicker from "./ColorPicker";
+import ColorPicker from "./components/ColorPicker/index";
+import { adjust } from "./helpers";
 
 export default function App() {
  const [color, setColor] = useState('#0b7285');
 
  const handleSetColor = ({hex}: {hex: string}) => {
   setColor(hex)
- }
-
- const adjust = (color: string, amount: number = 0) => {
-  return '#' + color.replace(/^#/, '').replace(/../g, color => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
  }
 
  const shades = [

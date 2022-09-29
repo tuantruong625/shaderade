@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import ColorPicker from "./ColorPicker";
 
 export default function App() {
- const [color, setColor] = useState<any>('#0b7285');
+ const [color, setColor] = useState('#0b7285');
 
- const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  setColor(e.target.value)
+ const handleSetColor = ({hex}: {hex: string}) => {
+  setColor(hex)
  }
 
  const adjust = (color: string, amount: number = 0) => {
@@ -31,29 +32,24 @@ export default function App() {
  ]
 
  return (
-  <div className="container mx-auto max-w-6xl m-5 px-10 text-gray-800">
-   <h1 className="text-3xl pt-8 pb-1 font-medium">Shaderate</h1>
-   <p className="pb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi iste recusandae.</p>
-
-   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-    <div className="col-span-full flex items-center">
-     <label htmlFor="color" className="flex flex-col md:w-1/4 w-100 pb-5">
-      Enter color
-      <input type="text" name="color" value={color} placeholder="#e2e2e2" className="p-2 border" onChange={onChange} />
-     </label>
-     <input type="color" name="color" value={color} className="ml-2 p-2 border-none rounded-full h-10 w-10" onChange={onChange} />
+  <div className="container mx-auto max-w-6xl px-10 text-gray-300 flex justify-center items-center min-h-screen">
+   <div className="bg-gray-800 p-5 rounded">
+    <div className="mb-5">
+     <h1 className="text-3xl font-medium">Shaderate</h1>
+     <p>Generate color shades</p>
     </div>
-    {
-     shades && shades.map((shade, index) => (
-      <div
-       key={index}
-       className="flex justify-center flex-col rounded-md"
-      >
-       <div className="py-16 bg-transparent rounded-t-lg" style={{ backgroundColor: adjust(color, shade) }}></div>
-       <p className="pt-2 uppercase text-lg text-gray-500 border-t-0 border-2 border-gray-100 p-2 rounded-b-lg">{adjust(color, shade)}</p>
-      </div>
-     ))
-    }
+    <ColorPicker color={color} handleSetColor={handleSetColor} />
+    <div className="grid grid-cols-6 gap-1 mt-6 place-items-center">
+     {
+      shades && shades.map((shade, index) => {
+       return (
+        <div key={index} className="text-white">
+         <div className="h-7 w-7 bg-transparent rounded" style={{ backgroundColor: adjust(color, shade) }} />
+        </div>
+       )
+      })
+     }
+    </div>
    </div>
   </div>
  )

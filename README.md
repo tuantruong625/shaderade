@@ -3,7 +3,8 @@ Generate color shades using hex codes
 
 <img src="./public/shaderade.png" alt="Shaderade App" />
 
-URL: https://shaderade.netlify.app/
+### `URL`
+https://shaderade.netlify.app/
 
 ---
 

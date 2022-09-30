@@ -2,8 +2,8 @@
 import { fireEvent, render, screen } from "@testing-library/react"
 import { act } from "react-dom/test-utils";
 
-import Tooltip from "../../components/Tooltip"
-import { adjust } from '../../helpers/index'
+import Tooltip from "../../../components/Tooltip"
+import { adjust } from '../../../helpers/index'
 
 describe('Tooltip', () => {
  it('Copies hex code to clipboard', async () => {

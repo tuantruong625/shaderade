@@ -11,7 +11,7 @@ const Container = styled.div`
   background-color: #2C3333 !important;
  }
 
- & #rc-editable-input-2 {
+ & #rc-editable-input-1 {
   height: 30px !important;
  }
 `

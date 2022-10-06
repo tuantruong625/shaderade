@@ -19,5 +19,5 @@ export const shades = [
 
 export const adjust = (color: string, amount: number = 0): string | undefined => {
  if (!color) return
- return '#' + color.replace(/^#/, '').replace(/../g, color => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
+ return '#' + color.replace(/^#/, '').replace(/../g, color => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2)).toUpperCase();
 }
